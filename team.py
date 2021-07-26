@@ -40,7 +40,7 @@ class Team():
                 self.windowInput.insertNewCommand(command[0],command[1])
             
             t = time()
-            if(len(self.listCommands) > 0 and (t - self.lastExec) >= 1 ):
+            if(len(self.listCommands) > 0 and (t - self.lastExec) >= 1.15 ):
                 self.lastExec = t
                 c = self.listCommands.pop(0)
                 self.window.command(c[1])
