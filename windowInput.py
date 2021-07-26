@@ -82,7 +82,6 @@ class WindowInput(tk.Tk):
 
     def placeNewBgSelect(self):
         l = self.winfo_children()
-        print(len(l),":",l)
         self.__changeColor(l[self.lengthHisto-1],WindowInput.transparentColor)
         self.__changeColor(l[self.lengthHisto],"#444444")
 

@@ -2,6 +2,7 @@ import subprocess
 from time import sleep
 import os
 from command import Command, CommandType
+from configuration import config
 
 class WindowGame():
 
@@ -27,8 +28,8 @@ class WindowGame():
 
     def launch(self):
         if(self.process == None):
-            self.process = subprocess.Popen(["mgba",f"./team{self.num}/{self.numSave}.gba", "-4","-C","fpsTarget=60"])
-            sleep(2)
+            self.process = subprocess.Popen(["mgba",f"./team{self.num}/{self.numSave}.gba", "-4","-C","fpsTarget=120"])
+            sleep(2.5)
             subprocess.call(f"xdotool search --name \"mGBA\" set_window --name \"poke{self.num}\"", shell=True)
             self.__idWindow = int(subprocess.check_output(f"xdotool search --name \"poke{self.num}\"", shell=True))
 
@@ -86,7 +87,8 @@ class WindowGame():
     def restart(self):
         self.numSave += 1
         self.shutdown()
-        self.launch()
+        if(self.numSave <= config["nbSave"] ):
+            self.launch()
 
 
 if( __name__ == "__main__"):

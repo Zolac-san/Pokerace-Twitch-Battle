@@ -49,7 +49,7 @@ class MessageDecoder():
                 if( c != None and t != None):
                     mem = c
                     commandList.append((c,t))
-
+        commandList = list(set(commandList))
         return commandList
 
 
