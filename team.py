@@ -2,7 +2,7 @@ from windowGame import WindowGame
 from threading import Thread
 from windowInput import WindowInput
 from time import sleep, time
-
+from command import Command
 
 
 class Team():
@@ -58,6 +58,8 @@ class Team():
         self.players.append(name)
 
     def insertCommand(self,username, lcommand):
+        if(lcommand[0][0] == Command.RESTART and username != self.captain):
+            return
         indexPlayer = self.players.index(username)
         if(indexPlayer == self.index and len(self.listCommands) <8):
             self.tmpListCommands.append((username,lcommand))
